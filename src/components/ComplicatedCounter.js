@@ -23,11 +23,11 @@ class ComplicatedCounter extends Component {
                 {this.renderImage()}
                 <h2>{this.state.currTrack}{this.props.units}</h2>
 
-                <button onClick={this.decreaseCondition}>
+                <button className='btn' onClick={this.decreaseCondition}>
                     {this.props.decreaseButtonText}
                 </button>
 
-                <button onClick={this.increaseCondition}>
+                <button className='btn' onClick={this.increaseCondition}>
                     {this.props.increaseButtonText}
                 </button>
 

@@ -37,3 +37,13 @@ import empty from './img/empty.png'
     mediumPicture={water}
     highPicture={steam}
   />
+
+import ComplicatedCounter from "./components/ComplicatedCounter";
+
+import ice from './img/icecube.png';
+import water from './img/water.png';
+import steam from './img/steam.png'
+
+import full from './img/full.png';
+import half from './img/half.png';
+import empty from './img/empty.png'

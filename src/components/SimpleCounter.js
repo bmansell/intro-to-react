@@ -17,11 +17,11 @@ class SimpleCounter extends Component {
             <div>
                 <h2>{this.state.currTrack}</h2>
 
-                <button onClick={this.decreaseCondition}>
+                <button className='btn' onClick={this.decreaseCondition}>
                     Decrease
                 </button>
 
-                <button onClick={this.increaseCondition}>
+                <button className='btn' onClick={this.increaseCondition}>
                     Increase
                 </button>
             </div>
