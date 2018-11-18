@@ -26,6 +26,22 @@
     padding: 1.5rem;
 }
 
+.container {
+    min-height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid {
+    display: grid;
+}
+
+.counter {
+    min-height: 140px;
+    font-size: 5rem;
+}
+
 h2 {
     padding: 0.5rem;
 }
@@ -36,6 +52,7 @@ button {
 
 img {
     max-height: 200px;
+    padding: 0 2rem 0 2rem;
 }
 
 @keyframes App-logo-spin {

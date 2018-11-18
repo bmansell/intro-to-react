@@ -1,8 +1,6 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-
-import drunk from '../img/drunk.png';
-import standing from '../img/standing.jpg';
+import {images} from '../images';
 
 class ComplicatedCounter extends Component {
     constructor(props) {
@@ -19,20 +17,27 @@ class ComplicatedCounter extends Component {
 
     render() {
         return (
-            <div>
-                {this.renderImage()}
-                <h2>{this.state.currTrack}{this.props.units}</h2>
+            <div className='container'>
+                <div className='grid'>
+                    <div className='grid-item'>
+                        {this.renderPerson(1)}
+                        {this.renderImage()}
+                        {this.renderPerson(2)}
+                    </div>
 
-                <button className='btn' onClick={this.decreaseCondition}>
-                    {this.props.decreaseButtonText}
-                </button>
+                    <div className='grid-item'>
+                        <h2>{this.state.currTrack}{this.props.units}</h2>
+                    </div>
 
-                <button className='btn' onClick={this.increaseCondition}>
-                    {this.props.increaseButtonText}
-                </button>
+                    <div className='grid-item'>
+                        <button className='btn' onClick={this.decreaseCondition}>
+                            {this.props.decreaseButtonText}
+                        </button>
 
-                <div>
-                    {this.renderPerson()}
+                        <button className='btn' onClick={this.increaseCondition}>
+                            {this.props.increaseButtonText}
+                        </button>
+                    </div>
                 </div>
             </div>
         )
@@ -42,22 +47,24 @@ class ComplicatedCounter extends Component {
         const currTrack = this.state.currTrack;
         const {lowLimit, lowPicture, mediumPicture, highLimit, highPicture} = this.props;
 
-        let image = <img src={mediumPicture} alt='medium'/>;
+        let image = <img src={mediumPicture} alt='Medium'/>;
 
         if (currTrack >= highLimit) {
-            image = <img src={highPicture} alt='high'/>;
+            image = <img src={highPicture} alt='High'/>;
         } else if (currTrack <= lowLimit) {
-            image = <img src={lowPicture} alt='low'/>;
+            image = <img src={lowPicture} alt='Low'/>;
         }
 
         return image;
     }
 
-    renderPerson() {
+    renderPerson(index) {
         let image = null;
 
         if (this.props.type === 'beer') {
-            image = this.state.currTrack <= 0 ? <img src={drunk} alt='drunk'/> : <img src={standing} alt={'not drunk'}/>;
+            image = this.state.currTrack === 0
+                ? <img src={images.people[index].drunk} alt='Drunk person'/>
+                : <img src={images.people[index].sober} alt='Sober person'/>;
         }
 
         return image;
@@ -65,7 +72,7 @@ class ComplicatedCounter extends Component {
 
     decreaseCondition() {
         let newTrack = this.state.currTrack;
-        newTrack -=this.props.increment;
+        newTrack -= this.props.increment;
 
         if (newTrack >= this.props.lowLimit) {
             this.setState({
@@ -76,7 +83,7 @@ class ComplicatedCounter extends Component {
 
     increaseCondition() {
         let newTrack = this.state.currTrack;
-        newTrack +=this.props.increment;
+        newTrack += this.props.increment;
 
         if (newTrack <= this.props.highLimit) {
             this.setState({

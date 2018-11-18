@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
 class SimpleCounter extends Component {
     constructor(props) {
@@ -14,23 +14,29 @@ class SimpleCounter extends Component {
 
     render() {
         return (
-            <div>
-                <h2>{this.state.currTrack}</h2>
+            <div className='container'>
+                <div className='grid'>
+                    <div className='grid-item'>
+                        <h2 className='counter'>{this.state.currTrack}</h2>
+                    </div>
 
-                <button className='btn' onClick={this.decreaseCondition}>
-                    Decrease
-                </button>
+                    <div className='grid-item'>
+                        <button className='btn' onClick={this.decreaseCondition}>
+                            Decrease
+                        </button>
 
-                <button className='btn' onClick={this.increaseCondition}>
-                    Increase
-                </button>
+                        <button className='btn' onClick={this.increaseCondition}>
+                            Increase
+                        </button>
+                    </div>
+                </div>
             </div>
         )
     }
 
     decreaseCondition() {
         let newTrack = this.state.currTrack;
-        newTrack -=1;
+        newTrack -= 1;
 
         this.setState({
             currTrack: newTrack,
@@ -39,7 +45,7 @@ class SimpleCounter extends Component {
 
     increaseCondition() {
         let newTrack = this.state.currTrack;
-        newTrack +=1;
+        newTrack += 1;
 
         this.setState({
             currTrack: newTrack,
